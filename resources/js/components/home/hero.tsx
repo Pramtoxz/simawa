@@ -4,7 +4,7 @@ import Foto from "@/assets/contoh.png"
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#02188B] to-[#0139A9] text-white">
+    <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-[#02188B] to-[#0139A9] text-white">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=500&width=500')] bg-repeat opacity-5"></div>
       </div>

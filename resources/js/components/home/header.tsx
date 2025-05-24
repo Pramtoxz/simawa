@@ -28,30 +28,37 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {["Beranda", "Berita UKM", "Kalender", "Tentang", "Kontak"].map((item, index) => (
+            {[
+              { name: "Beranda", href: "#hero" },
+              { name: "Berita UKM", href: "#news" },
+              { name: "UKM", href: "#ukm-showcase" },
+              { name: "Testimoni", href: "#testimonials" },
+              { name: "Kontak", href: "#footer" }
+            ].map((item, index) => (
               <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                href={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="text-gray-700 hover:text-[#02188B] px-3 py-2 text-sm font-medium transition-colors"
               >
-                {item}
+                {item.name}
               </motion.a>
             ))}
           </nav>
 
           <div className="hidden md:flex">
-            <motion.button
+            <motion.a
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-[#02188B] text-white px-4 py-2 rounded-md text-sm font-medium flex items-center"
+              href={route('login')}
             >
               Masuk <ChevronRight className="ml-1 h-4 w-4" />
-            </motion.button>
+            </motion.a>
           </div>
 
           {/* Mobile menu button */}
@@ -76,19 +83,25 @@ export default function Header() {
             className="md:hidden bg-white border-b border-gray-100"
           >
             <div className="px-4 pt-2 pb-3 space-y-1">
-              {["Beranda", "Berita UKM", "Kalender", "Tentang", "Kontak"].map((item) => (
+              {[
+                { name: "Beranda", href: "#hero" },
+                { name: "Berita UKM", href: "#news" },
+                { name: "UKM", href: "#ukm-showcase" },
+                { name: "Testimoni", href: "#testimonials" },
+                { name: "Kontak", href: "#footer" }
+              ].map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.name}
+                  href={item.href}
                   className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-[#02188B] hover:bg-gray-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
-              <button className="mt-3 w-full bg-[#02188B] text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center">
+              <a href={route('login')} className="mt-3 w-full bg-[#02188B] text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center">
                 Masuk <ChevronRight className="ml-1 h-4 w-4" />
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
