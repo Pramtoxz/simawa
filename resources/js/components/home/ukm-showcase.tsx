@@ -1,16 +1,24 @@
 import { motion } from "framer-motion"
 import { Link } from "@inertiajs/react"
+import bem from "@/assets/Organisasi/bem.png"
+import ukmRobotik from "@/assets/Organisasi/robotik.jpg"
+// import ukmSenja from "@/assets/Organisasi/senja.jpg"
+// import ukmFsi from "@/assets/Organisasi/fsi.png"
+// import ukmKwu from "@/assets/Organisasi/kwu.jpg"
+// import ukmUko from "@/assets/Organisasi/uko.png"
+// import mapala from "@/assets/Organisasi/mapala.jpg"
+// import infoKlik from "@/assets/Organisasi/bem.png"
 
 export default function UkmShowcase() {
   const ukmList = [
-    { name: "BEM-KM JAYANUSA", members: 120, events: 15 },
-    { name: "UKM ROBOTIKA", members: 85, events: 12 },
-    { name: "UKM SENJA", members: 64, events: 8 },
-    { name: "UKM FSI", members: 42, events: 10 },
-    { name: "UKM KWU", members: 56, events: 6 },
-    { name: "UKO JAYANUSA", members: 38, events: 7 },
-    { name: "MAPALA", members: 45, events: 9 },
-    { name: "INFO KLIK", members: 72, events: 11 },
+    { foto:{bem},name: "BEM-KM JAYANUSA", members: "Badan Eksekutif Mahasiswa-Keluarga Mahasiswa Jayanusa",link: "https://www.instagram.com/ukm_senja" },
+    { foto:{ukmRobotik},name: "UKM ROBOTIK", members: "Unik Kegiatan Mahasiswa Robotik", link: "https://www.instagram.com/ukm_robotik" },
+    { name: "UKM SENJA", members: "Unit Kegiatan Mahasiswa Seni Jayanusa", link: "https://www.instagram.com/ukm_senja" },
+    { name: "UKM FSI", members: "Forum Studi Islam Jayanusa", link: "https://www.instagram.com/ukm_fsi" },
+    { name: "UKM KWU", members: "Unit Kegiatan Mahasiswa Wirausaha Jayanusa", link: "https://www.instagram.com/ukm_kwu" },
+    { name: "UKO JAYANUSA", members: "Unit Kegiatan Olahraga Jayanusa", link: "https://www.instagram.com/uko_jayanusa" },
+    { name: "MAPALA", members: "Mahasiswa Pecinta Alam Jayanusa", link: "https://www.instagram.com/mapala_jayanusa" },
+    { name: "INFO KLIK", members: "Informasi Kegiatan Mahasiswa Jayanusa", link: "https://www.instagram.com/info_klik" },
   ]
 
   return (
@@ -23,8 +31,8 @@ export default function UkmShowcase() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Unit Kegiatan Mahasiswa</h2>
-          <p className="text-lg text-gray-600">Bergabunglah dengan berbagai UKM yang ada di Jayanusa</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Organisasi Mahasiswa</h2>
+          <p className="text-lg text-gray-600">Bergabunglah dengan berbagai Organisasi Mahasiswa yang ada di Jayanusa</p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -40,7 +48,7 @@ export default function UkmShowcase() {
             >
               <div className="h-40 bg-gray-200 relative overflow-hidden">
                 <img
-                  src={`/placeholder.svg?height=300&width=400&text=UKM+${ukm.name}`}
+                  src={`/placeholder.svg?height=300&width=400&text=UKM+${ukm.foto}`}
                   alt={ukm.name}
                   width={400}
                   height={300}
@@ -49,7 +57,9 @@ export default function UkmShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#02188B]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button className="text-xs bg-white text-[#02188B] px-2 py-1 rounded-full font-medium">
-                    Gabung Sekarang
+                    <Link href={ukm.link || "#"} className="flex items-center gap-1">
+                      Lihat Detail
+                    </Link>
                   </button>
                 </div>
               </div>
@@ -57,27 +67,11 @@ export default function UkmShowcase() {
                 <h3 className="font-bold text-gray-900 mb-1">{ukm.name}</h3>
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>{ukm.members} Anggota</span>
-                  <span>{ukm.events} Kegiatan</span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 text-center"
-        >
-          <Link
-            href="#"
-            className="inline-block bg-[#02188B] text-white px-6 py-3 rounded-md font-medium hover:bg-[#032cb3] transition-colors"
-          >
-            Lihat Semua UKM
-          </Link>
-        </motion.div>
       </div>
     </section>
   )

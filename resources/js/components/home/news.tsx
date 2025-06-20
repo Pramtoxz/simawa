@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Link } from "@inertiajs/react"
-import Foto from "@/assets/tes.png"
+import Foto from "@/assets/hero.png"
 
 // Sample news items data
 const newsItems = [

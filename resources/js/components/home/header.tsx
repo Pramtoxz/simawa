@@ -31,7 +31,7 @@ export default function Header() {
             {[
               { name: "Beranda", href: "#hero" },
               { name: "Berita UKM", href: "#news" },
-              { name: "UKM", href: "#ukm-showcase" },
+              { name: "Organisasi", href: "#ukm-showcase" },
               { name: "Testimoni", href: "#testimonials" },
               { name: "Kontak", href: "#footer" }
             ].map((item, index) => (
@@ -86,7 +86,7 @@ export default function Header() {
               {[
                 { name: "Beranda", href: "#hero" },
                 { name: "Berita UKM", href: "#news" },
-                { name: "UKM", href: "#ukm-showcase" },
+                { name: "Organisasi", href: "#ukm-showcase" },
                 { name: "Testimoni", href: "#testimonials" },
                 { name: "Kontak", href: "#footer" }
               ].map((item) => (

@@ -3,20 +3,20 @@ import { motion } from "framer-motion"
 export default function Testimonials() {
   const testimonialsList = [
     {
-      name: "Andi Pratama",
-      role: "Ketua UKM Teknologi",
+      name: "Pramudito Metra, S.Kom",
+      role: "Ketua UKM SENJA 2021-2022",
       quote:
         "Sistem informasi ini sangat membantu kami dalam mengelola kegiatan UKM dan menjangkau lebih banyak mahasiswa yang tertarik bergabung.",
     },
     {
-      name: "Siti Rahma",
-      role: "Anggota UKM Jurnalistik",
+      name: "Rafi Chandra, S.Kom",
+      role: "Kominfo Bem-KM Jayanusa 2023",
       quote:
         "Berkat platform ini, saya bisa dengan mudah mendapatkan informasi tentang kegiatan UKM yang akan datang dan tidak pernah ketinggalan event penting.",
     },
     {
-      name: "Budi Santoso",
-      role: "Anggota UKM Olahraga",
+      name: "Bagus Maulana, S.Kom",
+      role: "Anggota UKM Senja",
       quote:
         "Pendaftaran online membuat proses bergabung dengan UKM menjadi sangat mudah. Dokumentasi kegiatan juga tersimpan dengan baik di sistem.",
     },
