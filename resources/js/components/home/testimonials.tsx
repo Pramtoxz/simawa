@@ -6,19 +6,19 @@ export default function Testimonials() {
       name: "Pramudito Metra, S.Kom",
       role: "Ketua UKM SENJA 2021-2022",
       quote:
-        "Sistem informasi ini sangat membantu kami dalam mengelola kegiatan UKM dan menjangkau lebih banyak mahasiswa yang tertarik bergabung.",
+        "Bergabung dengan organisasi kampus adalah kunci membuka pintu peluang dan pengalaman luar biasa. Di sinilah kamu akan menemukan keluarga baru, membangun kepercayaan diri, dan menyalakan semangat untuk meraih mimpi-mimpimu.",
     },
     {
       name: "Rafi Chandra, S.Kom",
       role: "Kominfo Bem-KM Jayanusa 2023",
       quote:
-        "Berkat platform ini, saya bisa dengan mudah mendapatkan informasi tentang kegiatan UKM yang akan datang dan tidak pernah ketinggalan event penting.",
+        "Organisasi kampus bukan sekadar tempat berkumpul, tapi ruang di mana ide-ide besar lahir dan potensi terbaikmu tumbuh. Jadilah bagian dari perubahan, temukan versi terbaik dari dirimu bersama kami.",
     },
     {
-      name: "Bagus Maulana, S.Kom",
-      role: "Anggota UKM Senja",
+      name: "Kisra Widoni, S.Kom",
+      role: "Presiden Mahasiswa 2024",
       quote:
-        "Pendaftaran online membuat proses bergabung dengan UKM menjadi sangat mudah. Dokumentasi kegiatan juga tersimpan dengan baik di sistem.",
+        "Jangan ragu melangkah! Organisasi kampus adalah tempat di mana kamu bisa berani bermimpi, beraksi, dan membuktikan bahwa kamu mampu lebih dari yang kamu bayangkan. Ayo, wujudkan perjalanan luar biasamu di sini!",
     },
   ]
 

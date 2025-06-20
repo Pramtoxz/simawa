@@ -48,7 +48,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">UKM</h3>
             <ul className="space-y-2">
-              {["Teknologi Informasi", "Olahraga", "Seni & Budaya", "Jurnalistik", "Bahasa Inggris"].map((item) => (
+              {["BEM-KM JAYANUSA", "UKM SENJA","UKM ROBOTIK", "UKM FSI", "UKM KWU", "UKM MAPALA", "UKM JCLICK"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors">
                     UKM {item}
@@ -63,7 +63,7 @@ export default function Footer() {
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-gray-800 flex-shrink-0 mt-1"></div>
-                <span>Jl. Jendral Ahmad Yani No., Padang, Sumatera Barat</span>
+                <span>Jl. Olo Ladang No.1, Padang, Sumatera Barat</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-gray-800 flex-shrink-0"></div>
