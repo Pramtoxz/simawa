@@ -132,4 +132,26 @@ class BeritaController extends Controller
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil dihapus!');
     }
+
+    /**
+     * Tampilkan seluruh berita untuk umum (mahasiswa)
+     */
+    public function beritaPublik()
+    {
+        $berita = ModelBerita::with('user')->orderBy('tanggal', 'desc')->get();
+        return \Inertia\Inertia::render('berita/publik-index', [
+            'berita' => $berita
+        ]);
+    }
+
+    /**
+     * Tampilkan detail berita untuk umum (mahasiswa)
+     */
+    public function detailBeritaPublik($id)
+    {
+        $berita = ModelBerita::with('user')->findOrFail($id);
+        return \Inertia\Inertia::render('berita/publik-show', [
+            'berita' => $berita
+        ]);
+    }
 } 

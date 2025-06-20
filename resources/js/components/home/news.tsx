@@ -2,50 +2,41 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Link } from "@inertiajs/react"
-import Foto from "@/assets/hero.png"
 
-// Sample news items data
-const newsItems = [
-  {
-    title: "UKM Teknologi Raih Juara 1 Kompetisi Nasional",
-    excerpt:
-      "Tim dari UKM Teknologi Informasi berhasil meraih juara pertama dalam kompetisi pemrograman tingkat nasional yang diselenggarakan di Jakarta.",
-    category: "Prestasi",
-    date: "15 Mei 2023",
-  },
-  {
-    title: "Workshop Fotografi untuk Pemula oleh UKM Fotografi",
-    excerpt:
-      "UKM Fotografi akan mengadakan workshop fotografi untuk pemula yang terbuka untuk seluruh mahasiswa Jayanusa.",
-    category: "Acara",
-    date: "20 Mei 2023",
-  },
-  {
-    title: "Pendaftaran Anggota Baru UKM Bahasa Inggris",
-    excerpt:
-      "UKM Bahasa Inggris membuka pendaftaran anggota baru untuk periode 2023. Pendaftaran dapat dilakukan secara online melalui sistem informasi mahasiswa.",
-    category: "Pengumuman",
-    date: "25 Mei 2023",
-  },
-  {
-    title: "Seminar Kewirausahaan oleh UKM Wirausaha",
-    excerpt:
-      "UKM Wirausaha akan mengadakan seminar kewirausahaan dengan mengundang pengusaha sukses sebagai pembicara utama.",
-    category: "Acara",
-    date: "1 Juni 2023",
-  },
-]
+interface BeritaItem {
+  id: number;
+  judul: string;
+  isi: string;
+  gambar: string | null;
+  tanggal: string;
+  user?: { name: string };
+  kategori?: string;
+}
 
-export default function News() {
+interface NewsProps {
+  berita: BeritaItem[];
+}
+
+export default function News({ berita }: NewsProps) {
+  const newsItems = berita.slice(0, 4)
   const [activeNewsIndex, setActiveNewsIndex] = useState(0)
 
-  // Auto-rotate news items
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveNewsIndex((prev) => (prev + 1) % newsItems.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [newsItems.length])
+
+  // Format tanggal sederhana
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+    return new Date(dateString).toLocaleDateString('id-ID', options)
+  }
 
   return (
     <section id="news" className="py-16 md:py-24 bg-gray-50">
@@ -82,8 +73,8 @@ export default function News() {
                   className="h-full"
                 >
                   <img
-                    src={Foto}
-                    alt={`Berita UKM ${activeNewsIndex + 1}`}
+                    src={newsItems[activeNewsIndex].gambar ? `/storage/${newsItems[activeNewsIndex].gambar}` : "/assets/hero.png"}
+                    alt={newsItems[activeNewsIndex].judul}
                     width={800}
                     height={500}
                     className="w-full h-full object-cover"
@@ -92,15 +83,15 @@ export default function News() {
                   <div className="absolute bottom-0 left-0 p-6 text-white">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="bg-[#02188B] text-white text-xs px-2 py-1 rounded-full">
-                        {newsItems[activeNewsIndex].category}
+                        {newsItems[activeNewsIndex].kategori || "Berita"}
                       </span>
-                      <span className="text-xs text-white/80">{newsItems[activeNewsIndex].date}</span>
+                      <span className="text-xs text-white/80">{formatDate(newsItems[activeNewsIndex].tanggal)}</span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">{newsItems[activeNewsIndex].title}</h3>
-                    <p className="text-white/90 mb-4">{newsItems[activeNewsIndex].excerpt}</p>
-                    <button className="bg-white text-[#02188B] px-4 py-2 rounded-md text-sm font-medium flex items-center">
+                    <h3 className="text-2xl font-bold mb-2">{newsItems[activeNewsIndex].judul}</h3>
+                    <p className="text-white/90 mb-4 line-clamp-3">{newsItems[activeNewsIndex].isi.replace(/<[^>]+>/g, '').slice(0, 120)}...</p>
+                    <Link href={`/berita-publik/${newsItems[activeNewsIndex].id}`} className="bg-white text-[#02188B] px-4 py-2 rounded-md text-sm font-medium flex items-center">
                       Baca Selengkapnya <ArrowRight className="ml-1 h-4 w-4" />
-                    </button>
+                    </Link>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -127,7 +118,7 @@ export default function News() {
           >
             {newsItems.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.id}
                 whileHover={{ x: 5 }}
                 className={`p-4 rounded-lg cursor-pointer transition-colors ${
                   index === activeNewsIndex ? "bg-[#02188B] text-white" : "bg-white hover:bg-gray-100 text-gray-800"
@@ -141,8 +132,8 @@ export default function News() {
                     }`}
                   >
                     <img
-                      src={Foto}
-                      alt={item.title}
+                      src={item.gambar ? `/storage/${item.gambar}` : "/assets/hero.png"}
+                      alt={item.judul}
                       width={100}
                       height={100}
                       className="w-full h-full object-cover"
@@ -150,16 +141,16 @@ export default function News() {
                   </div>
                   <div>
                     <span className={`text-xs ${index === activeNewsIndex ? "text-blue-200" : "text-gray-500"}`}>
-                      {item.date}
+                      {formatDate(item.tanggal)}
                     </span>
-                    <h4 className="font-medium line-clamp-2">{item.title}</h4>
+                    <h4 className="font-medium line-clamp-2">{item.judul}</h4>
                   </div>
                 </div>
               </motion.div>
             ))}
 
             <Link
-              href="#"
+              href={route('berita.publik')}
               className="block text-center bg-white border border-gray-200 text-[#02188B] px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
             >
               Lihat Semua Berita

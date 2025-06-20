@@ -1,8 +1,11 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Foto from "@/assets/hero.png"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { useState } from "react"
 
 export default function Cta() {
+  const [open, setOpen] = useState(false)
   return (
     <section className="py-16 md:py-24 bg-[#02188B] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,6 +28,7 @@ export default function Cta() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-[#02188B] px-6 py-3 rounded-md font-medium flex items-center"
+                onClick={() => setOpen(true)}
               >
                 Daftar Sekarang <ArrowRight className="ml-2 h-4 w-4" />
               </motion.button>
@@ -81,6 +85,16 @@ export default function Cta() {
           </motion.div>
         </div>
       </div>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Mohon Maaf</DialogTitle>
+            <DialogDescription>
+              Periode pembukaan anggota baru belum di mulai, tunggu informasi selengkapnya
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 } 

@@ -5,9 +5,13 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\AnggotaController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\ModelBerita;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    $berita = ModelBerita::with('user')->orderBy('tanggal', 'desc')->limit(4)->get();
+    return Inertia::render('welcome', [
+        'berita' => $berita
+    ]);
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -134,6 +138,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         })->name('berita.destroy');
     });
 });
+
+// Route berita untuk mahasiswa umum (tanpa auth)
+Route::get('/berita-publik', [\App\Http\Controllers\BeritaController::class, 'beritaPublik'])->name('berita.publik');
+Route::get('/berita-publik/{id}', [\App\Http\Controllers\BeritaController::class, 'detailBeritaPublik'])->name('berita.publik.detail');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

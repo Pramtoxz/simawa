@@ -1,8 +1,12 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Foto from "@/assets/hero.png"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useState } from "react"
+import { Calendar } from "@/components/ui/calendar"
 
 export default function Hero() {
+  const [open, setOpen] = useState(false)
   return (
     <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-[#02188B] to-[#0139A9] text-white">
       <div className="absolute inset-0 opacity-10">
@@ -38,6 +42,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-transparent border border-white text-white px-6 py-3 rounded-md font-medium"
+                onClick={() => setOpen(true)}
               >
                 Kalender Kegiatan
               </motion.button>
@@ -73,6 +78,16 @@ export default function Hero() {
           ></path>
         </svg>
       </div>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Kalender Kegiatan</DialogTitle>
+          </DialogHeader>
+          <div className="flex justify-center py-4">
+            <Calendar />
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

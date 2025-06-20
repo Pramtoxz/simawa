@@ -31,7 +31,7 @@ export default function Features() {
     {
       icon: <ChevronRight className="h-6 w-6 text-white" />,
       title: "Pendaftaran Online",
-      description: "Daftar UKM secara online dengan proses yang cepat dan mudah",
+      description: "Pendaftaran Secara Periode UKM secara online dengan proses yang cepat dan mudah",
     },
   ]
   

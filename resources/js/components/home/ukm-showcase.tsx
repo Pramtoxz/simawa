@@ -1,24 +1,24 @@
 import { motion } from "framer-motion"
 import { Link } from "@inertiajs/react"
-import bem from "@/assets/Organisasi/bem.png"
-import ukmRobotik from "@/assets/Organisasi/robotik.jpg"
-// import ukmSenja from "@/assets/Organisasi/senja.jpg"
-// import ukmFsi from "@/assets/Organisasi/fsi.png"
-// import ukmKwu from "@/assets/Organisasi/kwu.jpg"
-// import ukmUko from "@/assets/Organisasi/uko.png"
-// import mapala from "@/assets/Organisasi/mapala.jpg"
-// import infoKlik from "@/assets/Organisasi/bem.png"
+import bem from "@/assets/organisasi/bem.png"
+import ukmRobotik from "@/assets/organisasi/robotik.jpg"
+import ukmSenja from "@/assets/organisasi/senja.jpg"
+import ukmFsi from "@/assets/organisasi/fsi.png"
+import ukmKwu from "@/assets/organisasi/kwu.jpg"
+import ukmUko from "@/assets/organisasi/uko.png"
+import mapala from "@/assets/organisasi/mapala.jpg"
+import jclick from "@/assets/organisasi/jclick.png"
 
 export default function UkmShowcase() {
   const ukmList = [
-    { foto:{bem},name: "BEM-KM JAYANUSA", members: "Badan Eksekutif Mahasiswa-Keluarga Mahasiswa Jayanusa",link: "https://www.instagram.com/ukm_senja" },
-    { foto:{ukmRobotik},name: "UKM ROBOTIK", members: "Unik Kegiatan Mahasiswa Robotik", link: "https://www.instagram.com/ukm_robotik" },
-    { name: "UKM SENJA", members: "Unit Kegiatan Mahasiswa Seni Jayanusa", link: "https://www.instagram.com/ukm_senja" },
-    { name: "UKM FSI", members: "Forum Studi Islam Jayanusa", link: "https://www.instagram.com/ukm_fsi" },
-    { name: "UKM KWU", members: "Unit Kegiatan Mahasiswa Wirausaha Jayanusa", link: "https://www.instagram.com/ukm_kwu" },
-    { name: "UKO JAYANUSA", members: "Unit Kegiatan Olahraga Jayanusa", link: "https://www.instagram.com/uko_jayanusa" },
-    { name: "MAPALA", members: "Mahasiswa Pecinta Alam Jayanusa", link: "https://www.instagram.com/mapala_jayanusa" },
-    { name: "INFO KLIK", members: "Informasi Kegiatan Mahasiswa Jayanusa", link: "https://www.instagram.com/info_klik" },
+    { foto: bem, name: "BEM-KM JAYANUSA", members: "Badan Eksekutif Mahasiswa-Keluarga Mahasiswa Jayanusa", link: "https://www.instagram.com/bemkmjayanusa" },
+    { foto: ukmRobotik, name: "UKM ROBOTIK", members: "Unit Kegiatan Mahasiswa Robotik", link: "https://www.instagram.com/robotic_jayanusa" },
+    { foto: ukmSenja, name: "UKM SENJA", members: "Unit Kegiatan Mahasiswa Seni Jayanusa", link: "https://www.instagram.com/ukm_senja" },
+    { foto: ukmFsi, name: "UKM FSI", members: "Forum Studi Islam Jayanusa", link: "https://www.instagram.com/fsishidratulfikri" },
+    { foto: ukmKwu, name: "UKM KWU", members: "Unit Kegiatan Mahasiswa Wirausaha Jayanusa", link: "https://www.instagram.com/kewirausahaan_jayanusa" },
+    { foto: ukmUko, name: "UKO JAYANUSA", members: "Unit Kegiatan Olahraga Jayanusa", link: "https://www.instagram.com/uko_jayanusa" },
+    { foto: mapala, name: "MAPALA", members: "Mahasiswa Pecinta Alam Jayanusa", link: "https://www.instagram.com/mapalajayanusa" },
+    { foto: jclick, name: "JCLICK", members: "Informasi Kegiatan Mahasiswa Jayanusa Click", link: "https://www.instagram.com/info.jclick" },
   ]
 
   return (
@@ -48,18 +48,18 @@ export default function UkmShowcase() {
             >
               <div className="h-40 bg-gray-200 relative overflow-hidden">
                 <img
-                  src={`/placeholder.svg?height=300&width=400&text=UKM+${ukm.foto}`}
+                  src={ukm.foto}
                   alt={ukm.name}
                   width={400}
                   height={300}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-32 h-32 mx-auto object-cover transition-transform duration-500 group-hover:scale-110 rounded-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#02188B]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button className="text-xs bg-white text-[#02188B] px-2 py-1 rounded-full font-medium">
-                    <Link href={ukm.link || "#"} className="flex items-center gap-1">
-                      Lihat Detail
-                    </Link>
+                    <a href={ukm.link || "#"} className="flex items-center gap-1" target="_blank" rel="noopener noreferrer">
+                      Sosial Media
+                    </a>
                   </button>
                 </div>
               </div>

@@ -8,14 +8,28 @@ import Testimonials from "@/components/home/testimonials"
 import Cta from "@/components/home/cta"
 import Footer from "@/components/home/footer"
 
-export default function Welcome() {
+interface BeritaItem {
+  id: number;
+  judul: string;
+  isi: string;
+  gambar: string | null;
+  tanggal: string;
+  user?: { name: string };
+  kategori?: string;
+}
+
+interface WelcomeProps {
+  berita: BeritaItem[];
+}
+
+export default function Welcome({ berita }: WelcomeProps) {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main>
         <Hero />
         <Features />
-        <News />
+        <News berita={berita} />
         <UkmShowcase />
         <Testimonials />
         <Cta />
