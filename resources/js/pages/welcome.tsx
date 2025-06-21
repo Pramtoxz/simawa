@@ -7,7 +7,7 @@ import UkmShowcase from "@/components/home/ukm-showcase"
 import Testimonials from "@/components/home/testimonials"
 import Cta from "@/components/home/cta"
 import Footer from "@/components/home/footer"
-import musik from "@/assets/mahasiswa.mp3"
+import musik from "@/assets/maju.mp3"
 
 interface BeritaItem {
   id: number;
